@@ -207,6 +207,7 @@ The program supports both CSV and PostgreSQL as storage options. The `CSVHandler
 
 ## TODO
 
-- Fix scraping rating data from product
+- Fix scraping rating value
+- Improve function for saving products to database
 
 ## License
