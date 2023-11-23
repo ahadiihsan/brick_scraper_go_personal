@@ -113,12 +113,6 @@ func (s *TokopediaScraper) Scrape(pageToScrape string) ([]entities.Product, erro
 		}
 	})
 
-	// Navigate to the Tokopedia URL
-	err := c.Visit(fmt.Sprintf("%s?page=%d&ob=5", pageToScrape, 1))
-	if err != nil {
-		return nil, err
-	}
-
 	// registering all pages to scrape
 	for n := 0; n < 5; n++ {
 		err := c.Visit(fmt.Sprintf("%s?page=%d&ob=5", pageToScrape, i))

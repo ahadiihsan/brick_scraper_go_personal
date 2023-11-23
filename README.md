@@ -199,4 +199,14 @@ The program supports both CSV and PostgreSQL as storage options. The `CSVHandler
 - Check the CSV file and PostgreSQL database for the extracted product information.
 - Sample result can be found in `products.csv`
 
+## Testing
+- Run the unit test by this command
+  ```bash
+    go test ./...
+    ```
+
+## TODO
+
+- Fix scraping rating data from product
+
 ## License
