@@ -31,8 +31,9 @@ func (s *TokopediaScraper) Scrape(pageToScrape string) ([]entities.Product, erro
 		colly.Async(true),
 	)
 
+	// make sure at least 5 requests are allowed to run in parallel
 	_ = c.Limit(&colly.LimitRule{
-		// limit the parallel requests to 4 request at a time
+		// limit the parallel requests to 5 request at a time
 		Parallelism: 5,
 	})
 
@@ -47,6 +48,7 @@ func (s *TokopediaScraper) Scrape(pageToScrape string) ([]entities.Product, erro
 	c.OnHTML(".css-54k5sq", func(e *colly.HTMLElement) {
 
 		wg.Add(1)
+		// Extract the product detail link from each product asynchronously
 		go func(e *colly.HTMLElement) {
 			defer wg.Done()
 
@@ -114,6 +116,7 @@ func (s *TokopediaScraper) Scrape(pageToScrape string) ([]entities.Product, erro
 	})
 
 	// registering all pages to scrape
+	// deploys 5 goroutines to scrape the pages
 	for n := 0; n < 5; n++ {
 		err := c.Visit(fmt.Sprintf("%s?page=%d&ob=5", pageToScrape, i))
 		i++
@@ -129,5 +132,6 @@ func (s *TokopediaScraper) Scrape(pageToScrape string) ([]entities.Product, erro
 	// Wait for all goroutines to finish
 	wg.Wait()
 
+	fmt.Println("Scraping completed.")
 	return products, nil
 }
