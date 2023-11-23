@@ -13,9 +13,9 @@ type CSVHandler struct {
 }
 
 // SaveProducts saves products to a CSV file
-func (h *CSVHandler) SaveProducts(products []entities.Product, filePath string) error {
+func (h *CSVHandler) SaveProducts(products []entities.Product) error {
 	// Create or open the CSV file
-	file, err := os.Create(filePath)
+	file, err := os.Create("products.csv")
 	if err != nil {
 		return fmt.Errorf("failed to create or open CSV file: %v", err)
 	}

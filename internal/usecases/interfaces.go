@@ -9,5 +9,5 @@ type Scraper interface {
 
 // DatabaseHandler interface for different database handlers
 type DatabaseHandler interface {
-	SaveProducts(products []entities.Product, filePath string) error
+	SaveProducts(products []entities.Product) error
 }
