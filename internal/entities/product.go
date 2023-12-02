@@ -1,3 +1,4 @@
+// initial
 package entities
 
 import "github.com/jinzhu/gorm"

@@ -1,3 +1,4 @@
+// initial
 package usecases
 
 import "github.com/ahadiihsan/brick_scraper_go/internal/entities"

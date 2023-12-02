@@ -1,3 +1,4 @@
+// initial
 package scraping
 
 import (
